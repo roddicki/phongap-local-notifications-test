@@ -62,7 +62,7 @@ var app = {
         cordova.plugins.notification.local.schedule({
             title: 'scheduled notification',
             text: 'fired after 1 minute from launch',
-            trigger: { in: 1, unit: 'minute' }
+            trigger: in: 1, unit: 'minute'
         });
     }
 };
