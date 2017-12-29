@@ -34,7 +34,10 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        app.notification();
+        app.notification("Test 1", "That was pretty easy!");
+        setTimeout(function(){
+            app.notification("Test 2", "With a delay and still pretty easy!");
+        }, 10000)
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -48,10 +51,10 @@ var app = {
         console.log('Received Event: ' + id);
     },
     //local notification eg using https://github.com/katzer/cordova-plugin-local-notifications
-    notification: function(){
+    notification: function(title, message){
         cordova.plugins.notification.local.schedule({
-            title: 'My first notification',
-            text: 'Thats pretty easy...',
+            title: title,
+            text: message,
             foreground: true
         });
         
