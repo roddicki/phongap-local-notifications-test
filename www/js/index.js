@@ -34,7 +34,6 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        notify();
         app.notification();
     },
     // Update DOM on a Received Event
@@ -48,27 +47,15 @@ var app = {
 
         console.log('Received Event: ' + id);
     },
-    //local notification eg 
+    //local notification eg using https://github.com/katzer/cordova-plugin-local-notifications
     notification: function(){
-        console.log('NOTIFY');
+        cordova.plugins.notification.local.schedule({
+            title: 'My first notification',
+            text: 'Thats pretty easy...',
+            foreground: true
+        });
         
     }
 };
 
-function notify() {
-    console.log('notify');
-    if (“Notification” in window) {
-      Notification.requestPermission(function (permission) {
-        // If the user accepts, let’s create a notification
-        if (permission === ‘granted’) {
-          var notification = new Notification(“My title”, {
-               tag: ‘message1’, 
-               body: “My body” 
-          }); 
-          notification.onshow  = function() { console.log(‘show’); };
-          notification.onclose = function() { console.log(‘close’); };
-          notification.onclick = function() { console.log(‘click’); };
-        }
-      });
-    }
-}
+
