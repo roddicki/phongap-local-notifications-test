@@ -54,8 +54,7 @@ var app = {
     notification: function(title, message){
         cordova.plugins.notification.local.schedule({
             title: title,
-            text: message,
-            foreground: true
+            text: message
         });
         
     }
