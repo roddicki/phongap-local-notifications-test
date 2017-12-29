@@ -38,8 +38,6 @@ var app = {
         setTimeout(function() {
             app.notification("Test 2", "After 30s that was pretty easy!");
         }, 30000);
-        app.notificationScheduled();
-
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -60,13 +58,6 @@ var app = {
             foreground: true
         });
         
-    },
-    notificationScheduled: function() {
-        cordova.plugins.notification.local.schedule({
-            title: 'scheduled notification',
-            text: 'fired after 1 minute from launch',
-            trigger: { in: 1, unit: 'minute' }
-        });
     }
 };
 
