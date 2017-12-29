@@ -35,9 +35,8 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
         app.notification("Test 1", "That was pretty easy!");
-        setTimeout(function(){
-            app.notification("Test 2", "With a delay and still pretty easy!");
-        }, 10000)
+        app.notificationScheduled();
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -58,6 +57,13 @@ var app = {
             foreground: true
         });
         
+    },
+    notificationScheduled: function() {
+        cordova.plugins.notification.local.schedule({
+            title: 'scheduled notification',
+            text: 'fired after 1 minute from launch',
+            trigger: { in: 1, unit: 'minute' }
+        });
     }
 };
 
